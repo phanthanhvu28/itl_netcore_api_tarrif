@@ -1,0 +1,15 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/Test.Domain.cs
+/AppCore/obj
+/AppCore/bin/Debug/net7.0
+/CoreAPI/bin/Debug/net7.0
+/CoreAPI/obj
+/Infrastructure/bin/Debug/net7.0
+/Infrastructure/obj
+/obj
+/Shared.Libraries/bin/Debug/net7.0
+/Shared.Libraries/obj
