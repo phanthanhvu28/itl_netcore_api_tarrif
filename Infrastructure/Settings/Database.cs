@@ -11,4 +11,9 @@ namespace Infrastructure.Settings
         public const string Name = "MySql:Tariff";
         public const string Version = "8.0.29";
     }
+    public class DatabaseSQLSVR
+    {
+        public const string Name = "MSSQL:Tariff";
+        public const string Version = "8.0.29";
+    }
 }

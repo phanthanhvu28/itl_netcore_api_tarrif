@@ -40,21 +40,29 @@ namespace Infrastructure
         private static void AddEfContextPool(this IServiceCollection services,
         IConfiguration configuration)
         {
+            //services.AddDbContextPool<MainDbContext>(options =>
+            //{
+            //    string? connectionString = configuration.GetConnectionString(Database.Name);
+            //    MySqlServerVersion version = new(Database.Version);
+            //    options
+            //        .UseLazyLoadingProxies()
+            //        .UseMySql(connectionString, version,
+            //            options =>
+            //                options.UseNewtonsoftJson()
+            //                    .EnableRetryOnFailure(
+            //                        DefaultMaxRetry,
+            //                        DefaultMaxTimeRetry,
+            //                        null)
+            //        );
+            //});
+            string? connectionString = configuration.GetConnectionString(DatabaseSQLSVR.Name);
+
             services.AddDbContextPool<MainDbContext>(options =>
-            {
-                string? connectionString = configuration.GetConnectionString(Database.Name);
-                MySqlServerVersion version = new(Database.Version);
-                options
-                    .UseLazyLoadingProxies()
-                    .UseMySql(connectionString, version,
-                        options =>
-                            options.UseNewtonsoftJson()
-                                .EnableRetryOnFailure(
-                                    DefaultMaxRetry,
-                                    DefaultMaxTimeRetry,
-                                    null)
-                    );
-            });
+
+                options.UseSqlServer(configuration.GetConnectionString(connectionString ?? ""))
+                .EnableSensitiveDataLogging()
+                .EnableDetailedErrors()
+            );
 
             services.AddScoped<IDbFacade>(p => p.GetRequiredService<MainDbContext>());
         }
