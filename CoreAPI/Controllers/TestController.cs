@@ -30,5 +30,12 @@ namespace CoreAPI.Controllers
             var result = await Mediator.Send(query, cancellationToken);
             return Ok(result);
         }
+        [HttpGet("searchCosting2")]
+        public async Task<IActionResult> GetCostingSearch2(
+      [FromQuery] DTCostingSearch.Query query, CancellationToken cancellationToken)
+        {
+            var result = await Mediator.Send(query, cancellationToken);
+            return Ok(result);
+        }
     }
 }
